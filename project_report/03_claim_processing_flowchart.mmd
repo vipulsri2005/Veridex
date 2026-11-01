@@ -1,0 +1,26 @@
+flowchart TD
+  A[Valid claim data] --> B{Claim type}
+  B -->|Car| C[Start risk score at 20]
+  B -->|Health| D[Start risk score at 18]
+  C --> C1[Check claim to premium ratio]
+  C1 --> C2[Check incident time and police report]
+  C2 --> C3[Check tenure and claim amount]
+  C3 --> C4[Check severity and injury amount]
+  C4 --> C5[Check witnesses and police report]
+  D --> D1[Check loss date after policy inception]
+  D1 --> D2[Check claim to premium ratio]
+  D2 --> D3[Check risk segmentation]
+  D3 --> D4[Check mild severity and claim amount]
+  C5 --> E[Round and clamp percentage-style score]
+  D4 --> E
+  E --> F{Score at least 65?}
+  F -->|Yes| H[HIGH]
+  F -->|No| G{Score at least 35?}
+  G -->|Yes| I[MEDIUM]
+  G -->|No| J[LOW]
+  H --> K[Return baseline result and triggered factors]
+  I --> K
+  J --> K
+  K --> L{Gemini key configured?}
+  L -->|Yes| M[Optional text enrichment; does not change score]
+  L -->|No| N[Baseline result only]

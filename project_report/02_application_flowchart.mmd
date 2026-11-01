@@ -1,0 +1,22 @@
+flowchart TD
+  A[Load index.html] --> B[main.tsx mounts App]
+  B --> C[Dashboard]
+  C --> D[Choose vehicle or health]
+  D --> E[Controlled form with sample defaults]
+  E --> F[Change and blur validation]
+  F --> G{Submit valid?}
+  G -->|No| H[Show field errors and focus first invalid field]
+  H --> E
+  G -->|Yes| I[ClaimAnalysis sets loading and stores claim in state]
+  I --> J[analyzeClaim dispatches by claim type]
+  J --> K[Deterministic local rules create baseline result]
+  K --> L{API key present?}
+  L -->|No| M[Brief demo delay]
+  M --> R[Render baseline result]
+  L -->|Yes| N[Request Gemini enrichment]
+  N --> O{Usable structured response?}
+  O -->|Yes| P[Attach AI narrative fields]
+  P --> R
+  O -->|No or API failure| R
+  R --> S[Optional Copilot question]
+  S --> T[Gemini API response]

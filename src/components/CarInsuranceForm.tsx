@@ -114,17 +114,17 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
   return (
     <form id="car-insurance-form" onSubmit={handleSubmit} noValidate className="space-y-8">
       {/* Preset Action Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-3 p-4 bg-indigo-50/70 rounded-xl border border-indigo-100">
-        <div className="flex items-center space-x-2 text-xs font-semibold text-indigo-900">
-          <Sparkles className="w-4 h-4 text-indigo-600" />
-          <span>Quick Demo Presets:</span>
+      <div className="flex flex-wrap items-center justify-between gap-3 p-3 bg-[#f5f5f5] rounded border border-[#e1e1e1] font-sans text-xs">
+        <div className="flex items-center space-x-2 text-[#666]">
+          <Sparkles className="w-3.5 h-3.5 text-[#9e563e]" />
+          <span>TELEMETRY PRESETS:</span>
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <button
             type="button"
             id="btn-load-high-risk-car"
             onClick={() => loadPreset(highRiskCarSample)}
-            className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-rose-100 text-rose-800 hover:bg-rose-200 border border-rose-200 transition-colors"
+            className="px-2.5 py-1 text-xs rounded bg-rose-950/30 text-[#a14a45] hover:bg-rose-950/60 border border-rose-900/40 transition-colors"
           >
             Load High-Risk Sample
           </button>
@@ -132,7 +132,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
             type="button"
             id="btn-load-low-risk-car"
             onClick={() => loadPreset(lowRiskCarSample)}
-            className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-emerald-100 text-emerald-800 hover:bg-emerald-200 border border-emerald-200 transition-colors"
+            className="px-2.5 py-1 text-xs rounded bg-emerald-950/30 text-[#477a53] hover:bg-emerald-950/60 border border-emerald-900/40 transition-colors"
           >
             Load Low-Risk Sample
           </button>
@@ -140,7 +140,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
             type="button"
             id="btn-reset-car-form"
             onClick={resetForm}
-            className="px-3 py-1.5 text-xs font-semibold rounded-lg bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 transition-colors inline-flex items-center gap-1"
+            className="px-2.5 py-1 text-xs rounded bg-[#f5f5f5] text-[#666] hover:text-[#2a2a2a] border border-[#e1e1e1] transition-colors inline-flex items-center gap-1"
           >
             <RotateCcw className="w-3 h-3" />
             Reset
@@ -149,21 +149,21 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
       </div>
 
       {/* SECTION 1: Customer Information */}
-      <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-xs">
-        <div className="flex items-center space-x-3 pb-4 mb-5 border-b border-slate-100">
-          <div className="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center">
+      <div className="bg-white rounded-md border border-[#e1e1e1] p-6">
+        <div className="flex items-center space-x-3 pb-3 mb-5 border-b border-[#1b1e25]">
+          <div className="w-7 h-7 rounded border border-[#d3d3d3] bg-[#f5f5f5] text-[#444] flex items-center justify-center">
             <User className="w-4 h-4" />
           </div>
           <div>
-            <h3 className="text-base font-bold text-slate-900">Customer Information</h3>
-            <p className="text-xs text-slate-500">Policyholder background and tenure characteristics</p>
+            <h3 className="text-sm font-bold font-sans text-[#171717]">Customer Information</h3>
+            <p className="text-[11px] font-sans text-[#777]">Policyholder background and tenure characteristics</p>
           </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {/* Age */}
           <div>
-            <label htmlFor="car-field-age" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            <label htmlFor="car-field-age" className="block text-[11px] font-sans uppercase tracking-wider text-[#666] mb-1">
               Age <span className="text-rose-500">*</span>
             </label>
             <input
@@ -174,10 +174,10 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
               value={formData.age}
               onChange={(e) => handleChange('age', e.target.value === '' ? '' : Number(e.target.value))}
               onBlur={() => handleBlur('age')}
-              className={`w-full px-3.5 py-2.5 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 ${
+              className={`w-full px-3 py-2 rounded border text-xs sm:text-sm font-sans transition-colors focus:outline-none ${
                 errors.age && touched.age
-                  ? 'border-rose-400 bg-rose-50/30 focus:ring-rose-400 text-rose-900'
-                  : 'border-slate-300 focus:border-indigo-600 focus:ring-indigo-100 text-slate-900'
+                  ? 'border-rose-800 bg-[#fbf1f0] focus:border-rose-600 text-rose-300'
+                  : 'border-[#e1e1e1] focus:border-[#9e563e] bg-white text-[#171717]'
               }`}
               placeholder="e.g. 38"
             />
@@ -191,7 +191,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
 
           {/* Gender */}
           <div>
-            <label htmlFor="car-field-gender" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            <label htmlFor="car-field-gender" className="block text-[11px] font-sans uppercase tracking-wider text-[#666] mb-1">
               Gender <span className="text-rose-500">*</span>
             </label>
             <select
@@ -199,7 +199,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
               value={formData.gender}
               onChange={(e) => handleChange('gender', e.target.value)}
               onBlur={() => handleBlur('gender')}
-              className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 text-slate-900 bg-white"
+              className="w-full px-3 py-2 rounded border border-[#e1e1e1] text-xs sm:text-sm font-sans focus:border-[#9e563e] text-[#171717] bg-white focus:outline-none"
             >
               <option value="MALE">Male</option>
               <option value="FEMALE">Female</option>
@@ -209,7 +209,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
 
           {/* Education */}
           <div>
-            <label htmlFor="car-field-education" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            <label htmlFor="car-field-education" className="block text-[11px] font-sans uppercase tracking-wider text-[#666] mb-1">
               Education <span className="text-rose-500">*</span>
             </label>
             <select
@@ -217,7 +217,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
               value={formData.education}
               onChange={(e) => handleChange('education', e.target.value)}
               onBlur={() => handleBlur('education')}
-              className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 text-slate-900 bg-white"
+              className="w-full px-3 py-2 rounded border border-[#e1e1e1] text-xs sm:text-sm font-sans focus:border-[#9e563e] text-[#171717] bg-white focus:outline-none"
             >
               <option value="High School">High School</option>
               <option value="Associate">Associate Degree</option>
@@ -231,7 +231,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
 
           {/* Occupation */}
           <div>
-            <label htmlFor="car-field-occupation" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            <label htmlFor="car-field-occupation" className="block text-[11px] font-sans uppercase tracking-wider text-[#666] mb-1">
               Occupation <span className="text-rose-500">*</span>
             </label>
             <select
@@ -239,7 +239,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
               value={formData.occupation}
               onChange={(e) => handleChange('occupation', e.target.value)}
               onBlur={() => handleBlur('occupation')}
-              className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 text-slate-900 bg-white"
+              className="w-full px-3 py-2 rounded border border-[#e1e1e1] text-xs sm:text-sm font-sans focus:border-[#9e563e] text-[#171717] bg-white focus:outline-none"
             >
               <option value="Tech-support">Tech-support</option>
               <option value="Craft-repair">Craft-repair</option>
@@ -258,7 +258,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
 
           {/* Hobbies */}
           <div>
-            <label htmlFor="car-field-hobbies" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            <label htmlFor="car-field-hobbies" className="block text-[11px] font-sans uppercase tracking-wider text-[#666] mb-1">
               Hobbies <span className="text-rose-500">*</span>
             </label>
             <select
@@ -266,7 +266,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
               value={formData.hobbies}
               onChange={(e) => handleChange('hobbies', e.target.value)}
               onBlur={() => handleBlur('hobbies')}
-              className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 text-slate-900 bg-white"
+              className="w-full px-3 py-2 rounded border border-[#e1e1e1] text-xs sm:text-sm font-sans focus:border-[#9e563e] text-[#171717] bg-white focus:outline-none"
             >
               <option value="reading">Reading</option>
               <option value="exercise">Exercise / Fitness</option>
@@ -285,7 +285,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
 
           {/* Relationship */}
           <div>
-            <label htmlFor="car-field-relationship" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            <label htmlFor="car-field-relationship" className="block text-[11px] font-sans uppercase tracking-wider text-[#666] mb-1">
               Relationship <span className="text-rose-500">*</span>
             </label>
             <select
@@ -293,7 +293,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
               value={formData.relationship}
               onChange={(e) => handleChange('relationship', e.target.value)}
               onBlur={() => handleBlur('relationship')}
-              className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 text-slate-900 bg-white"
+              className="w-full px-3 py-2 rounded border border-[#e1e1e1] text-xs sm:text-sm font-sans focus:border-[#9e563e] text-[#171717] bg-white focus:outline-none"
             >
               <option value="husband">Husband</option>
               <option value="wife">Wife</option>
@@ -306,7 +306,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
 
           {/* Months as Customer */}
           <div>
-            <label htmlFor="car-field-monthsAsCustomer" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            <label htmlFor="car-field-monthsAsCustomer" className="block text-[11px] font-sans uppercase tracking-wider text-[#666] mb-1">
               Months as Customer <span className="text-rose-500">*</span>
             </label>
             <input
@@ -316,10 +316,10 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
               value={formData.monthsAsCustomer}
               onChange={(e) => handleChange('monthsAsCustomer', e.target.value === '' ? '' : Number(e.target.value))}
               onBlur={() => handleBlur('monthsAsCustomer')}
-              className={`w-full px-3.5 py-2.5 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 ${
+              className={`w-full px-3 py-2 rounded border text-xs sm:text-sm font-sans transition-colors focus:outline-none ${
                 errors.monthsAsCustomer && touched.monthsAsCustomer
-                  ? 'border-rose-400 bg-rose-50/30 focus:ring-rose-400 text-rose-900'
-                  : 'border-slate-300 focus:border-indigo-600 focus:ring-indigo-100 text-slate-900'
+                  ? 'border-rose-800 bg-[#fbf1f0] focus:border-rose-600 text-rose-300'
+                  : 'border-[#e1e1e1] focus:border-[#9e563e] bg-white text-[#171717]'
               }`}
               placeholder="e.g. 48"
             />
@@ -334,21 +334,21 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
       </div>
 
       {/* SECTION 2: Policy Information */}
-      <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-xs">
-        <div className="flex items-center space-x-3 pb-4 mb-5 border-b border-slate-100">
-          <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center">
+      <div className="bg-white rounded-md border border-[#e1e1e1] p-6">
+        <div className="flex items-center space-x-3 pb-3 mb-5 border-b border-[#1b1e25]">
+          <div className="w-7 h-7 rounded border border-[#d3d3d3] bg-[#f5f5f5] text-[#444] flex items-center justify-center">
             <ShieldCheck className="w-4 h-4" />
           </div>
           <div>
-            <h3 className="text-base font-bold text-slate-900">Policy Information</h3>
-            <p className="text-xs text-slate-500">Coverage terms, deductibles, and premium limits</p>
+            <h3 className="text-sm font-bold font-sans text-[#171717]">Policy Information</h3>
+            <p className="text-[11px] font-sans text-[#777]">Coverage terms, deductibles, and premium limits</p>
           </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {/* Policy Number */}
           <div>
-            <label htmlFor="car-field-policyNumber" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            <label htmlFor="car-field-policyNumber" className="block text-[11px] font-sans uppercase tracking-wider text-[#666] mb-1">
               Policy Number <span className="text-rose-500">*</span>
             </label>
             <input
@@ -357,10 +357,10 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
               value={formData.policyNumber}
               onChange={(e) => handleChange('policyNumber', e.target.value)}
               onBlur={() => handleBlur('policyNumber')}
-              className={`w-full px-3.5 py-2.5 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 ${
+              className={`w-full px-3 py-2 rounded border text-xs sm:text-sm font-sans transition-colors focus:outline-none ${
                 errors.policyNumber && touched.policyNumber
-                  ? 'border-rose-400 bg-rose-50/30 focus:ring-rose-400 text-rose-900'
-                  : 'border-slate-300 focus:border-indigo-600 focus:ring-indigo-100 text-slate-900'
+                  ? 'border-rose-800 bg-[#fbf1f0] focus:border-rose-600 text-rose-300'
+                  : 'border-[#e1e1e1] focus:border-[#9e563e] bg-white text-[#171717]'
               }`}
               placeholder="POL-894102"
             />
@@ -374,7 +374,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
 
           {/* Policy State */}
           <div>
-            <label htmlFor="car-field-policyState" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            <label htmlFor="car-field-policyState" className="block text-[11px] font-sans uppercase tracking-wider text-[#666] mb-1">
               Policy State <span className="text-rose-500">*</span>
             </label>
             <select
@@ -382,7 +382,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
               value={formData.policyState}
               onChange={(e) => handleChange('policyState', e.target.value)}
               onBlur={() => handleBlur('policyState')}
-              className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 text-slate-900 bg-white"
+              className="w-full px-3 py-2 rounded border border-[#e1e1e1] text-xs sm:text-sm font-sans focus:border-[#9e563e] text-[#171717] bg-white focus:outline-none"
             >
               <option value="OH">Ohio (OH)</option>
               <option value="IN">Indiana (IN)</option>
@@ -396,7 +396,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
 
           {/* Policy CSL */}
           <div>
-            <label htmlFor="car-field-policyCsl" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            <label htmlFor="car-field-policyCsl" className="block text-[11px] font-sans uppercase tracking-wider text-[#666] mb-1">
               Policy CSL <span className="text-rose-500">*</span>
             </label>
             <select
@@ -404,7 +404,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
               value={formData.policyCsl}
               onChange={(e) => handleChange('policyCsl', e.target.value)}
               onBlur={() => handleBlur('policyCsl')}
-              className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 text-slate-900 bg-white"
+              className="w-full px-3 py-2 rounded border border-[#e1e1e1] text-xs sm:text-sm font-sans focus:border-[#9e563e] text-[#171717] bg-white focus:outline-none"
             >
               <option value="100/300">100/300 ($100k / $300k)</option>
               <option value="250/500">250/500 ($250k / $500k)</option>
@@ -414,7 +414,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
 
           {/* Policy Deductible */}
           <div>
-            <label htmlFor="car-field-policyDeductible" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            <label htmlFor="car-field-policyDeductible" className="block text-[11px] font-sans uppercase tracking-wider text-[#666] mb-1">
               Policy Deductible ($) <span className="text-rose-500">*</span>
             </label>
             <select
@@ -422,7 +422,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
               value={formData.policyDeductible}
               onChange={(e) => handleChange('policyDeductible', Number(e.target.value))}
               onBlur={() => handleBlur('policyDeductible')}
-              className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 text-slate-900 bg-white"
+              className="w-full px-3 py-2 rounded border border-[#e1e1e1] text-xs sm:text-sm font-sans focus:border-[#9e563e] text-[#171717] bg-white focus:outline-none"
             >
               <option value={500}>$500</option>
               <option value={1000}>$1,000</option>
@@ -432,7 +432,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
 
           {/* Annual Premium */}
           <div>
-            <label htmlFor="car-field-annualPremium" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            <label htmlFor="car-field-annualPremium" className="block text-[11px] font-sans uppercase tracking-wider text-[#666] mb-1">
               Annual Premium ($) <span className="text-rose-500">*</span>
             </label>
             <input
@@ -442,10 +442,10 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
               value={formData.annualPremium}
               onChange={(e) => handleChange('annualPremium', e.target.value === '' ? '' : Number(e.target.value))}
               onBlur={() => handleBlur('annualPremium')}
-              className={`w-full px-3.5 py-2.5 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 ${
+              className={`w-full px-3 py-2 rounded border text-xs sm:text-sm font-sans transition-colors focus:outline-none ${
                 errors.annualPremium && touched.annualPremium
-                  ? 'border-rose-400 bg-rose-50/30 focus:ring-rose-400 text-rose-900'
-                  : 'border-slate-300 focus:border-indigo-600 focus:ring-indigo-100 text-slate-900'
+                  ? 'border-rose-800 bg-[#fbf1f0] focus:border-rose-600 text-rose-300'
+                  : 'border-[#e1e1e1] focus:border-[#9e563e] bg-white text-[#171717]'
               }`}
               placeholder="e.g. 1425"
             />
@@ -459,7 +459,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
 
           {/* Umbrella Limit */}
           <div>
-            <label htmlFor="car-field-umbrellaLimit" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            <label htmlFor="car-field-umbrellaLimit" className="block text-[11px] font-sans uppercase tracking-wider text-[#666] mb-1">
               Umbrella Limit ($) <span className="text-rose-500">*</span>
             </label>
             <input
@@ -469,10 +469,10 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
               value={formData.umbrellaLimit}
               onChange={(e) => handleChange('umbrellaLimit', e.target.value === '' ? '' : Number(e.target.value))}
               onBlur={() => handleBlur('umbrellaLimit')}
-              className={`w-full px-3.5 py-2.5 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 ${
+              className={`w-full px-3 py-2 rounded border text-xs sm:text-sm font-sans transition-colors focus:outline-none ${
                 errors.umbrellaLimit && touched.umbrellaLimit
-                  ? 'border-rose-400 bg-rose-50/30 focus:ring-rose-400 text-rose-900'
-                  : 'border-slate-300 focus:border-indigo-600 focus:ring-indigo-100 text-slate-900'
+                  ? 'border-rose-800 bg-[#fbf1f0] focus:border-rose-600 text-rose-300'
+                  : 'border-[#e1e1e1] focus:border-[#9e563e] bg-white text-[#171717]'
               }`}
               placeholder="e.g. 0"
             />
@@ -487,21 +487,21 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
       </div>
 
       {/* SECTION 3: Incident Information */}
-      <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-xs">
-        <div className="flex items-center space-x-3 pb-4 mb-5 border-b border-slate-100">
-          <div className="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center">
+      <div className="bg-white rounded-md border border-[#e1e1e1] p-6">
+        <div className="flex items-center space-x-3 pb-3 mb-5 border-b border-[#1b1e25]">
+          <div className="w-7 h-7 rounded border border-[#d3d3d3] bg-[#f5f5f5] text-[#444] flex items-center justify-center">
             <AlertOctagon className="w-4 h-4" />
           </div>
           <div>
-            <h3 className="text-base font-bold text-slate-900">Incident Information</h3>
-            <p className="text-xs text-slate-500">Circumstances, time, authorities, and loss severity</p>
+            <h3 className="text-sm font-bold font-sans text-[#171717]">Incident Information</h3>
+            <p className="text-[11px] font-sans text-[#777]">Circumstances, time, authorities, and loss severity</p>
           </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {/* Incident Type */}
           <div>
-            <label htmlFor="car-field-incidentType" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            <label htmlFor="car-field-incidentType" className="block text-[11px] font-sans uppercase tracking-wider text-[#666] mb-1">
               Incident Type <span className="text-rose-500">*</span>
             </label>
             <select
@@ -509,7 +509,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
               value={formData.incidentType}
               onChange={(e) => handleChange('incidentType', e.target.value)}
               onBlur={() => handleBlur('incidentType')}
-              className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 text-slate-900 bg-white"
+              className="w-full px-3 py-2 rounded border border-[#e1e1e1] text-xs sm:text-sm font-sans focus:border-[#9e563e] text-[#171717] bg-white focus:outline-none"
             >
               <option value="Single Vehicle Collision">Single Vehicle Collision</option>
               <option value="Multi-vehicle Collision">Multi-vehicle Collision</option>
@@ -520,7 +520,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
 
           {/* Collision Type */}
           <div>
-            <label htmlFor="car-field-collisionType" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            <label htmlFor="car-field-collisionType" className="block text-[11px] font-sans uppercase tracking-wider text-[#666] mb-1">
               Collision Type <span className="text-rose-500">*</span>
             </label>
             <select
@@ -528,7 +528,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
               value={formData.collisionType}
               onChange={(e) => handleChange('collisionType', e.target.value)}
               onBlur={() => handleBlur('collisionType')}
-              className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 text-slate-900 bg-white"
+              className="w-full px-3 py-2 rounded border border-[#e1e1e1] text-xs sm:text-sm font-sans focus:border-[#9e563e] text-[#171717] bg-white focus:outline-none"
             >
               <option value="Front Collision">Front Collision</option>
               <option value="Rear Collision">Rear Collision</option>
@@ -539,7 +539,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
 
           {/* Incident Severity */}
           <div>
-            <label htmlFor="car-field-incidentSeverity" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            <label htmlFor="car-field-incidentSeverity" className="block text-[11px] font-sans uppercase tracking-wider text-[#666] mb-1">
               Incident Severity <span className="text-rose-500">*</span>
             </label>
             <select
@@ -547,7 +547,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
               value={formData.incidentSeverity}
               onChange={(e) => handleChange('incidentSeverity', e.target.value)}
               onBlur={() => handleBlur('incidentSeverity')}
-              className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 text-slate-900 bg-white"
+              className="w-full px-3 py-2 rounded border border-[#e1e1e1] text-xs sm:text-sm font-sans focus:border-[#9e563e] text-[#171717] bg-white focus:outline-none"
             >
               <option value="Minor Damage">Minor Damage</option>
               <option value="Major Damage">Major Damage</option>
@@ -558,7 +558,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
 
           {/* Incident State */}
           <div>
-            <label htmlFor="car-field-incidentState" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            <label htmlFor="car-field-incidentState" className="block text-[11px] font-sans uppercase tracking-wider text-[#666] mb-1">
               Incident State <span className="text-rose-500">*</span>
             </label>
             <select
@@ -566,7 +566,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
               value={formData.incidentState}
               onChange={(e) => handleChange('incidentState', e.target.value)}
               onBlur={() => handleBlur('incidentState')}
-              className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 text-slate-900 bg-white"
+              className="w-full px-3 py-2 rounded border border-[#e1e1e1] text-xs sm:text-sm font-sans focus:border-[#9e563e] text-[#171717] bg-white focus:outline-none"
             >
               <option value="OH">Ohio (OH)</option>
               <option value="IN">Indiana (IN)</option>
@@ -580,7 +580,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
 
           {/* Incident City */}
           <div>
-            <label htmlFor="car-field-incidentCity" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            <label htmlFor="car-field-incidentCity" className="block text-[11px] font-sans uppercase tracking-wider text-[#666] mb-1">
               Incident City <span className="text-rose-500">*</span>
             </label>
             <input
@@ -589,10 +589,10 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
               value={formData.incidentCity}
               onChange={(e) => handleChange('incidentCity', e.target.value)}
               onBlur={() => handleBlur('incidentCity')}
-              className={`w-full px-3.5 py-2.5 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 ${
+              className={`w-full px-3 py-2 rounded border text-xs sm:text-sm font-sans transition-colors focus:outline-none ${
                 errors.incidentCity && touched.incidentCity
-                  ? 'border-rose-400 bg-rose-50/30 focus:ring-rose-400 text-rose-900'
-                  : 'border-slate-300 focus:border-indigo-600 focus:ring-indigo-100 text-slate-900'
+                  ? 'border-rose-800 bg-[#fbf1f0] focus:border-rose-600 text-rose-300'
+                  : 'border-[#e1e1e1] focus:border-[#9e563e] bg-white text-[#171717]'
               }`}
               placeholder="e.g. Columbus"
             />
@@ -606,7 +606,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
 
           {/* Incident Hour */}
           <div>
-            <label htmlFor="car-field-incidentHour" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            <label htmlFor="car-field-incidentHour" className="block text-[11px] font-sans uppercase tracking-wider text-[#666] mb-1">
               Incident Hour (0–23) <span className="text-rose-500">*</span>
             </label>
             <input
@@ -617,10 +617,10 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
               value={formData.incidentHour}
               onChange={(e) => handleChange('incidentHour', e.target.value === '' ? '' : Number(e.target.value))}
               onBlur={() => handleBlur('incidentHour')}
-              className={`w-full px-3.5 py-2.5 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 ${
+              className={`w-full px-3 py-2 rounded border text-xs sm:text-sm font-sans transition-colors focus:outline-none ${
                 errors.incidentHour && touched.incidentHour
-                  ? 'border-rose-400 bg-rose-50/30 focus:ring-rose-400 text-rose-900'
-                  : 'border-slate-300 focus:border-indigo-600 focus:ring-indigo-100 text-slate-900'
+                  ? 'border-rose-800 bg-[#fbf1f0] focus:border-rose-600 text-rose-300'
+                  : 'border-[#e1e1e1] focus:border-[#9e563e] bg-white text-[#171717]'
               }`}
               placeholder="e.g. 14"
             />
@@ -634,7 +634,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
 
           {/* Number of Vehicles */}
           <div>
-            <label htmlFor="car-field-numberOfVehicles" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            <label htmlFor="car-field-numberOfVehicles" className="block text-[11px] font-sans uppercase tracking-wider text-[#666] mb-1">
               Number of Vehicles <span className="text-rose-500">*</span>
             </label>
             <input
@@ -644,10 +644,10 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
               value={formData.numberOfVehicles}
               onChange={(e) => handleChange('numberOfVehicles', e.target.value === '' ? '' : Number(e.target.value))}
               onBlur={() => handleBlur('numberOfVehicles')}
-              className={`w-full px-3.5 py-2.5 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 ${
+              className={`w-full px-3 py-2 rounded border text-xs sm:text-sm font-sans transition-colors focus:outline-none ${
                 errors.numberOfVehicles && touched.numberOfVehicles
-                  ? 'border-rose-400 bg-rose-50/30 focus:ring-rose-400 text-rose-900'
-                  : 'border-slate-300 focus:border-indigo-600 focus:ring-indigo-100 text-slate-900'
+                  ? 'border-rose-800 bg-[#fbf1f0] focus:border-rose-600 text-rose-300'
+                  : 'border-[#e1e1e1] focus:border-[#9e563e] bg-white text-[#171717]'
               }`}
               placeholder="1"
             />
@@ -661,7 +661,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
 
           {/* Property Damage */}
           <div>
-            <label htmlFor="car-field-propertyDamage" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            <label htmlFor="car-field-propertyDamage" className="block text-[11px] font-sans uppercase tracking-wider text-[#666] mb-1">
               Property Damage <span className="text-rose-500">*</span>
             </label>
             <select
@@ -669,7 +669,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
               value={formData.propertyDamage}
               onChange={(e) => handleChange('propertyDamage', e.target.value)}
               onBlur={() => handleBlur('propertyDamage')}
-              className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 text-slate-900 bg-white"
+              className="w-full px-3 py-2 rounded border border-[#e1e1e1] text-xs sm:text-sm font-sans focus:border-[#9e563e] text-[#171717] bg-white focus:outline-none"
             >
               <option value="YES">Yes</option>
               <option value="NO">No</option>
@@ -679,7 +679,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
 
           {/* Bodily Injuries */}
           <div>
-            <label htmlFor="car-field-bodilyInjuries" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            <label htmlFor="car-field-bodilyInjuries" className="block text-[11px] font-sans uppercase tracking-wider text-[#666] mb-1">
               Bodily Injuries <span className="text-rose-500">*</span>
             </label>
             <input
@@ -689,10 +689,10 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
               value={formData.bodilyInjuries}
               onChange={(e) => handleChange('bodilyInjuries', e.target.value === '' ? '' : Number(e.target.value))}
               onBlur={() => handleBlur('bodilyInjuries')}
-              className={`w-full px-3.5 py-2.5 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 ${
+              className={`w-full px-3 py-2 rounded border text-xs sm:text-sm font-sans transition-colors focus:outline-none ${
                 errors.bodilyInjuries && touched.bodilyInjuries
-                  ? 'border-rose-400 bg-rose-50/30 focus:ring-rose-400 text-rose-900'
-                  : 'border-slate-300 focus:border-indigo-600 focus:ring-indigo-100 text-slate-900'
+                  ? 'border-rose-800 bg-[#fbf1f0] focus:border-rose-600 text-rose-300'
+                  : 'border-[#e1e1e1] focus:border-[#9e563e] bg-white text-[#171717]'
               }`}
               placeholder="0"
             />
@@ -706,7 +706,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
 
           {/* Witnesses */}
           <div>
-            <label htmlFor="car-field-witnesses" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            <label htmlFor="car-field-witnesses" className="block text-[11px] font-sans uppercase tracking-wider text-[#666] mb-1">
               Witnesses <span className="text-rose-500">*</span>
             </label>
             <input
@@ -716,10 +716,10 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
               value={formData.witnesses}
               onChange={(e) => handleChange('witnesses', e.target.value === '' ? '' : Number(e.target.value))}
               onBlur={() => handleBlur('witnesses')}
-              className={`w-full px-3.5 py-2.5 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 ${
+              className={`w-full px-3 py-2 rounded border text-xs sm:text-sm font-sans transition-colors focus:outline-none ${
                 errors.witnesses && touched.witnesses
-                  ? 'border-rose-400 bg-rose-50/30 focus:ring-rose-400 text-rose-900'
-                  : 'border-slate-300 focus:border-indigo-600 focus:ring-indigo-100 text-slate-900'
+                  ? 'border-rose-800 bg-[#fbf1f0] focus:border-rose-600 text-rose-300'
+                  : 'border-[#e1e1e1] focus:border-[#9e563e] bg-white text-[#171717]'
               }`}
               placeholder="0"
             />
@@ -733,7 +733,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
 
           {/* Police Report Available */}
           <div>
-            <label htmlFor="car-field-policeReportAvailable" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            <label htmlFor="car-field-policeReportAvailable" className="block text-[11px] font-sans uppercase tracking-wider text-[#666] mb-1">
               Police Report Available <span className="text-rose-500">*</span>
             </label>
             <select
@@ -741,7 +741,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
               value={formData.policeReportAvailable}
               onChange={(e) => handleChange('policeReportAvailable', e.target.value)}
               onBlur={() => handleBlur('policeReportAvailable')}
-              className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 text-slate-900 bg-white"
+              className="w-full px-3 py-2 rounded border border-[#e1e1e1] text-xs sm:text-sm font-sans focus:border-[#9e563e] text-[#171717] bg-white focus:outline-none"
             >
               <option value="YES">Yes</option>
               <option value="NO">No</option>
@@ -750,7 +750,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
 
           {/* Authorities Contacted */}
           <div>
-            <label htmlFor="car-field-authoritiesContacted" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            <label htmlFor="car-field-authoritiesContacted" className="block text-[11px] font-sans uppercase tracking-wider text-[#666] mb-1">
               Authorities Contacted <span className="text-rose-500">*</span>
             </label>
             <select
@@ -758,7 +758,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
               value={formData.authoritiesContacted}
               onChange={(e) => handleChange('authoritiesContacted', e.target.value)}
               onBlur={() => handleBlur('authoritiesContacted')}
-              className="w-full px-3.5 py-2.5 rounded-lg border border-slate-300 text-sm focus:border-indigo-600 focus:ring-2 focus:ring-indigo-100 text-slate-900 bg-white"
+              className="w-full px-3 py-2 rounded border border-[#e1e1e1] text-xs sm:text-sm font-sans focus:border-[#9e563e] text-[#171717] bg-white focus:outline-none"
             >
               <option value="Police">Police</option>
               <option value="Fire">Fire</option>
@@ -771,21 +771,21 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
       </div>
 
       {/* SECTION 4: Vehicle Information */}
-      <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-xs">
-        <div className="flex items-center space-x-3 pb-4 mb-5 border-b border-slate-100">
-          <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
+      <div className="bg-white rounded-md border border-[#e1e1e1] p-6">
+        <div className="flex items-center space-x-3 pb-3 mb-5 border-b border-[#1b1e25]">
+          <div className="w-7 h-7 rounded border border-[#d3d3d3] bg-[#f5f5f5] text-[#444] flex items-center justify-center">
             <Car className="w-4 h-4" />
           </div>
           <div>
-            <h3 className="text-base font-bold text-slate-900">Vehicle Information</h3>
-            <p className="text-xs text-slate-500">Insured automobile specifications</p>
+            <h3 className="text-sm font-bold font-sans text-[#171717]">Vehicle Information</h3>
+            <p className="text-[11px] font-sans text-[#777]">Insured automobile specifications</p>
           </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
           {/* Vehicle Make */}
           <div>
-            <label htmlFor="car-field-vehicleMake" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            <label htmlFor="car-field-vehicleMake" className="block text-[11px] font-sans uppercase tracking-wider text-[#666] mb-1">
               Vehicle Make <span className="text-rose-500">*</span>
             </label>
             <input
@@ -794,10 +794,10 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
               value={formData.vehicleMake}
               onChange={(e) => handleChange('vehicleMake', e.target.value)}
               onBlur={() => handleBlur('vehicleMake')}
-              className={`w-full px-3.5 py-2.5 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 ${
+              className={`w-full px-3 py-2 rounded border text-xs sm:text-sm font-sans transition-colors focus:outline-none ${
                 errors.vehicleMake && touched.vehicleMake
-                  ? 'border-rose-400 bg-rose-50/30 focus:ring-rose-400 text-rose-900'
-                  : 'border-slate-300 focus:border-indigo-600 focus:ring-indigo-100 text-slate-900'
+                  ? 'border-rose-800 bg-[#fbf1f0] focus:border-rose-600 text-rose-300'
+                  : 'border-[#e1e1e1] focus:border-[#9e563e] bg-white text-[#171717]'
               }`}
               placeholder="e.g. Toyota"
             />
@@ -811,7 +811,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
 
           {/* Vehicle Model */}
           <div>
-            <label htmlFor="car-field-vehicleModel" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            <label htmlFor="car-field-vehicleModel" className="block text-[11px] font-sans uppercase tracking-wider text-[#666] mb-1">
               Vehicle Model <span className="text-rose-500">*</span>
             </label>
             <input
@@ -820,10 +820,10 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
               value={formData.vehicleModel}
               onChange={(e) => handleChange('vehicleModel', e.target.value)}
               onBlur={() => handleBlur('vehicleModel')}
-              className={`w-full px-3.5 py-2.5 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 ${
+              className={`w-full px-3 py-2 rounded border text-xs sm:text-sm font-sans transition-colors focus:outline-none ${
                 errors.vehicleModel && touched.vehicleModel
-                  ? 'border-rose-400 bg-rose-50/30 focus:ring-rose-400 text-rose-900'
-                  : 'border-slate-300 focus:border-indigo-600 focus:ring-indigo-100 text-slate-900'
+                  ? 'border-rose-800 bg-[#fbf1f0] focus:border-rose-600 text-rose-300'
+                  : 'border-[#e1e1e1] focus:border-[#9e563e] bg-white text-[#171717]'
               }`}
               placeholder="e.g. Camry"
             />
@@ -837,7 +837,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
 
           {/* Vehicle Year */}
           <div>
-            <label htmlFor="car-field-vehicleYear" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            <label htmlFor="car-field-vehicleYear" className="block text-[11px] font-sans uppercase tracking-wider text-[#666] mb-1">
               Vehicle Year <span className="text-rose-500">*</span>
             </label>
             <input
@@ -848,10 +848,10 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
               value={formData.vehicleYear}
               onChange={(e) => handleChange('vehicleYear', e.target.value === '' ? '' : Number(e.target.value))}
               onBlur={() => handleBlur('vehicleYear')}
-              className={`w-full px-3.5 py-2.5 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 ${
+              className={`w-full px-3 py-2 rounded border text-xs sm:text-sm font-sans transition-colors focus:outline-none ${
                 errors.vehicleYear && touched.vehicleYear
-                  ? 'border-rose-400 bg-rose-50/30 focus:ring-rose-400 text-rose-900'
-                  : 'border-slate-300 focus:border-indigo-600 focus:ring-indigo-100 text-slate-900'
+                  ? 'border-rose-800 bg-[#fbf1f0] focus:border-rose-600 text-rose-300'
+                  : 'border-[#e1e1e1] focus:border-[#9e563e] bg-white text-[#171717]'
               }`}
               placeholder="e.g. 2021"
             />
@@ -866,21 +866,21 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
       </div>
 
       {/* SECTION 5: Claim Information */}
-      <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-xs">
-        <div className="flex items-center space-x-3 pb-4 mb-5 border-b border-slate-100">
-          <div className="w-8 h-8 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center">
+      <div className="bg-white rounded-md border border-[#e1e1e1] p-6">
+        <div className="flex items-center space-x-3 pb-3 mb-5 border-b border-[#1b1e25]">
+          <div className="w-7 h-7 rounded border border-[#d3d3d3] bg-[#f5f5f5] text-[#444] flex items-center justify-center">
             <DollarSign className="w-4 h-4" />
           </div>
           <div>
-            <h3 className="text-base font-bold text-slate-900">Claim Information</h3>
-            <p className="text-xs text-slate-500">Claim sub-totals across injuries, property, and vehicle repairs</p>
+            <h3 className="text-sm font-bold font-sans text-[#171717]">Claim Information</h3>
+            <p className="text-[11px] font-sans text-[#777]">Claim sub-totals across injuries, property, and vehicle repairs</p>
           </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {/* Total Claim Amount */}
           <div>
-            <label htmlFor="car-field-totalClaimAmount" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            <label htmlFor="car-field-totalClaimAmount" className="block text-[11px] font-sans uppercase tracking-wider text-[#666] mb-1">
               Total Claim Amount ($) <span className="text-rose-500">*</span>
             </label>
             <input
@@ -892,8 +892,8 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
               onBlur={() => handleBlur('totalClaimAmount')}
               className={`w-full px-3.5 py-2.5 rounded-lg border text-sm font-semibold transition-colors focus:outline-none focus:ring-2 ${
                 errors.totalClaimAmount && touched.totalClaimAmount
-                  ? 'border-rose-400 bg-rose-50/30 focus:ring-rose-400 text-rose-900'
-                  : 'border-slate-300 focus:border-indigo-600 focus:ring-indigo-100 text-slate-900'
+                  ? 'border-rose-800 bg-[#fbf1f0] focus:border-rose-600 text-rose-300'
+                  : 'border-[#e1e1e1] focus:border-[#9e563e] bg-white text-[#171717]'
               }`}
               placeholder="e.g. 4800"
             />
@@ -907,7 +907,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
 
           {/* Injury Claim */}
           <div>
-            <label htmlFor="car-field-injuryClaim" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            <label htmlFor="car-field-injuryClaim" className="block text-[11px] font-sans uppercase tracking-wider text-[#666] mb-1">
               Injury Claim ($) <span className="text-rose-500">*</span>
             </label>
             <input
@@ -917,10 +917,10 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
               value={formData.injuryClaim}
               onChange={(e) => handleChange('injuryClaim', e.target.value === '' ? '' : Number(e.target.value))}
               onBlur={() => handleBlur('injuryClaim')}
-              className={`w-full px-3.5 py-2.5 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 ${
+              className={`w-full px-3 py-2 rounded border text-xs sm:text-sm font-sans transition-colors focus:outline-none ${
                 errors.injuryClaim && touched.injuryClaim
-                  ? 'border-rose-400 bg-rose-50/30 focus:ring-rose-400 text-rose-900'
-                  : 'border-slate-300 focus:border-indigo-600 focus:ring-indigo-100 text-slate-900'
+                  ? 'border-rose-800 bg-[#fbf1f0] focus:border-rose-600 text-rose-300'
+                  : 'border-[#e1e1e1] focus:border-[#9e563e] bg-white text-[#171717]'
               }`}
               placeholder="0"
             />
@@ -934,7 +934,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
 
           {/* Property Claim */}
           <div>
-            <label htmlFor="car-field-propertyClaim" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            <label htmlFor="car-field-propertyClaim" className="block text-[11px] font-sans uppercase tracking-wider text-[#666] mb-1">
               Property Claim ($) <span className="text-rose-500">*</span>
             </label>
             <input
@@ -944,10 +944,10 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
               value={formData.propertyClaim}
               onChange={(e) => handleChange('propertyClaim', e.target.value === '' ? '' : Number(e.target.value))}
               onBlur={() => handleBlur('propertyClaim')}
-              className={`w-full px-3.5 py-2.5 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 ${
+              className={`w-full px-3 py-2 rounded border text-xs sm:text-sm font-sans transition-colors focus:outline-none ${
                 errors.propertyClaim && touched.propertyClaim
-                  ? 'border-rose-400 bg-rose-50/30 focus:ring-rose-400 text-rose-900'
-                  : 'border-slate-300 focus:border-indigo-600 focus:ring-indigo-100 text-slate-900'
+                  ? 'border-rose-800 bg-[#fbf1f0] focus:border-rose-600 text-rose-300'
+                  : 'border-[#e1e1e1] focus:border-[#9e563e] bg-white text-[#171717]'
               }`}
               placeholder="0"
             />
@@ -961,7 +961,7 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
 
           {/* Vehicle Claim */}
           <div>
-            <label htmlFor="car-field-vehicleClaim" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+            <label htmlFor="car-field-vehicleClaim" className="block text-[11px] font-sans uppercase tracking-wider text-[#666] mb-1">
               Vehicle Claim ($) <span className="text-rose-500">*</span>
             </label>
             <input
@@ -971,10 +971,10 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
               value={formData.vehicleClaim}
               onChange={(e) => handleChange('vehicleClaim', e.target.value === '' ? '' : Number(e.target.value))}
               onBlur={() => handleBlur('vehicleClaim')}
-              className={`w-full px-3.5 py-2.5 rounded-lg border text-sm transition-colors focus:outline-none focus:ring-2 ${
+              className={`w-full px-3 py-2 rounded border text-xs sm:text-sm font-sans transition-colors focus:outline-none ${
                 errors.vehicleClaim && touched.vehicleClaim
-                  ? 'border-rose-400 bg-rose-50/30 focus:ring-rose-400 text-rose-900'
-                  : 'border-slate-300 focus:border-indigo-600 focus:ring-indigo-100 text-slate-900'
+                  ? 'border-rose-800 bg-[#fbf1f0] focus:border-rose-600 text-rose-300'
+                  : 'border-[#e1e1e1] focus:border-[#9e563e] bg-white text-[#171717]'
               }`}
               placeholder="0"
             />
@@ -994,9 +994,9 @@ export const CarInsuranceForm: React.FC<CarInsuranceFormProps> = ({ onSubmit, is
           id="btn-analyze-car-claim"
           type="submit"
           disabled={isSubmitting}
-          className="w-full py-4 px-6 rounded-xl bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white font-bold text-base shadow-lg shadow-indigo-200 transition-all duration-150 flex items-center justify-center space-x-2 focus:outline-none focus:ring-4 focus:ring-indigo-200"
+          className="w-full py-3 px-6 rounded bg-[#9e563e] hover:bg-[#84432f] disabled:opacity-50 text-white font-sans font-semibold text-xs transition-colors flex items-center justify-center space-x-2"
         >
-          <span>Analyze Claim</span>
+          <span>RUN VEHICLE ANOMALY ANALYSIS</span>
         </button>
       </div>
     </form>

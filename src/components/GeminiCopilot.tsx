@@ -111,7 +111,7 @@ export const GeminiCopilot: React.FC<GeminiCopilotProps> = ({
         className="w-full px-5 py-4 flex items-center justify-between bg-gradient-to-r from-indigo-50/70 via-purple-50/40 to-white hover:bg-indigo-50/90 transition-colors text-left"
       >
         <div className="flex items-center space-x-3">
-          <div className="w-9 h-9 rounded-xl bg-indigo-600 text-white flex items-center justify-center shadow-xs">
+          <div className="w-9 h-9 rounded-xl bg-indigo-600 text-[#171717] flex items-center justify-center shadow-xs">
             <Sparkles className="w-5 h-5 text-indigo-100" />
           </div>
           <div>
@@ -148,7 +148,7 @@ export const GeminiCopilot: React.FC<GeminiCopilotProps> = ({
               <button
                 type="button"
                 onClick={onOpenSettings}
-                className="px-3 py-1.5 rounded-lg bg-amber-600 text-white font-bold text-xs hover:bg-amber-700 transition-colors"
+                className="px-3 py-1.5 rounded-lg bg-amber-600 text-[#171717] font-bold text-xs hover:bg-amber-700 transition-colors"
               >
                 Configure Key
               </button>
@@ -163,14 +163,14 @@ export const GeminiCopilot: React.FC<GeminiCopilotProps> = ({
                 className={`flex gap-2.5 ${m.sender === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 {m.sender === 'ai' && (
-                  <div className="w-7 h-7 rounded-lg bg-indigo-600 text-white flex items-center justify-center shrink-0 mt-0.5">
+                  <div className="w-7 h-7 rounded-lg bg-indigo-600 text-[#171717] flex items-center justify-center shrink-0 mt-0.5">
                     <Bot className="w-4 h-4" />
                   </div>
                 )}
                 <div
                   className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-xs sm:text-sm leading-relaxed ${
                     m.sender === 'user'
-                      ? 'bg-indigo-600 text-white rounded-br-xs'
+                      ? 'bg-indigo-600 text-[#171717] rounded-br-xs'
                       : 'bg-slate-100 text-slate-900 rounded-bl-xs border border-slate-200/60'
                   }`}
                 >
@@ -192,7 +192,7 @@ export const GeminiCopilot: React.FC<GeminiCopilotProps> = ({
             ))}
             {isLoading && (
               <div className="flex gap-2.5 items-center text-xs text-slate-500 italic">
-                <div className="w-7 h-7 rounded-lg bg-indigo-600 text-white flex items-center justify-center shrink-0">
+                <div className="w-7 h-7 rounded-lg bg-indigo-600 text-[#171717] flex items-center justify-center shrink-0">
                   <Loader2 className="w-4 h-4 animate-spin" />
                 </div>
                 <span>Gemini is evaluating forensic patterns...</span>
@@ -235,7 +235,7 @@ export const GeminiCopilot: React.FC<GeminiCopilotProps> = ({
             <button
               type="submit"
               disabled={isLoading || !input.trim()}
-              className="px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs sm:text-sm transition-colors disabled:opacity-50 flex items-center justify-center shadow-xs"
+              className="px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-[#171717] font-bold text-xs sm:text-sm transition-colors disabled:opacity-50 flex items-center justify-center shadow-xs"
             >
               <Send className="w-4 h-4" />
             </button>

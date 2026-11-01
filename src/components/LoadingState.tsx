@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { ShieldCheck, Cpu, Sparkles } from 'lucide-react';
 import { isGeminiConfigured } from '../services/geminiKey';
 
@@ -7,68 +7,47 @@ interface LoadingStateProps {
 }
 
 export const LoadingState: React.FC<LoadingStateProps> = ({ insuranceType }) => {
-  const [currentStep, setCurrentStep] = useState(0);
   const isGeminiActive = isGeminiConfigured();
-
-  const steps = [
-    'Parsing insurance claim telemetry...',
-    insuranceType === 'car'
-      ? 'Evaluating vehicle collision severity and policy limits...'
-      : 'Cross-verifying procedure costs and policy inception dates...',
-    isGeminiActive
-      ? 'Invoking Gemini 2.5 Flash for forensic reasoning & pattern matching...'
-      : 'Synthesizing heuristic risk assessment & anomaly probability...',
-  ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentStep((prev) => (prev < steps.length - 1 ? prev + 1 : prev));
-    }, 450);
-    return () => clearInterval(interval);
-  }, [steps.length]);
 
   return (
     <div
       id="loading-state-container"
-      className="bg-white rounded-2xl border border-slate-200 shadow-xl p-8 sm:p-12 text-center max-w-lg mx-auto my-8 animate-in fade-in duration-300"
+      className="bg-white rounded-xl border border-[#e1e1e1] shadow-xl shadow-black/20 p-8 sm:p-10 text-center max-w-lg mx-auto my-8 animate-in fade-in duration-300"
       role="status"
       aria-live="polite"
     >
       <div className="relative w-20 h-20 mx-auto mb-6 flex items-center justify-center">
         {/* Outer pulsing ring */}
-        <div className="absolute inset-0 rounded-full bg-indigo-100 animate-ping opacity-60"></div>
+        <div className="absolute inset-0 rounded-full bg-[#9e563e]/10 animate-ping opacity-60"></div>
         {/* Spinning gradient ring */}
-        <div className="absolute inset-0 rounded-full border-4 border-indigo-100 border-t-indigo-600 animate-spin"></div>
+        <div className="absolute inset-0 rounded-full border-2 border-[#e1e1e1] border-t-amber-400 animate-spin"></div>
         {/* Center icon */}
-        <div className="relative z-10 w-12 h-12 rounded-full bg-indigo-600 text-white flex items-center justify-center shadow-md">
+        <div className="relative z-10 w-12 h-12 rounded-lg bg-[#9e563e]/10 border border-[#e1d7cb] text-[#9e563e] flex items-center justify-center">
           {isGeminiActive ? (
-            <Sparkles className="w-6 h-6 animate-pulse text-indigo-100" />
+            <Sparkles className="w-6 h-6 animate-pulse" />
           ) : (
             <Cpu className="w-6 h-6 animate-pulse" />
           )}
         </div>
       </div>
 
-      <h3 className="text-xl sm:text-2xl font-bold text-slate-900 mb-2">
-        {isGeminiActive ? 'AI Forensic Analysis in Progress...' : 'Analyzing claim...'}
+      <h3 className="text-lg sm:text-xl font-bold font-sans text-[#171717] mb-2">
+        {isGeminiActive ? 'Forensic analysis in progress' : 'Analyzing claim'}
       </h3>
-      <p className="text-sm text-slate-500 mb-6">
-        {isGeminiActive
-          ? 'Running hybrid heuristic scoring and Gemini 2.5 Flash forensic intelligence.'
-          : 'Executing fraud risk prediction model on submitted claim attributes.'}
+      <p className="text-sm text-[#666] mb-6">
+        Reviewing {insuranceType === 'car' ? 'vehicle' : 'health'} claim details and preparing a risk assessment.
       </p>
 
       {/* Progress step bar */}
-      <div className="w-full bg-slate-100 rounded-full h-2 mb-4 overflow-hidden">
+      <div className="w-full bg-white rounded-full h-2 mb-4 overflow-hidden border border-[#e1e1e1]" aria-label="Analysis in progress">
         <div
-          className="bg-indigo-600 h-2 rounded-full transition-all duration-500 ease-out"
-          style={{ width: `${((currentStep + 1) / steps.length) * 100}%` }}
+          className="bg-[#9e563e] h-full w-1/3 rounded-full animate-pulse"
         ></div>
       </div>
 
-      <div className="flex items-center justify-center space-x-2 text-xs font-medium text-indigo-700 bg-indigo-50 py-2 px-3 rounded-lg border border-indigo-100">
-        <ShieldCheck className="w-3.5 h-3.5 shrink-0" />
-        <span>{steps[currentStep]}</span>
+      <div className="flex items-center justify-center space-x-2 text-xs font-sans text-[#674333] bg-[#9e563e]/5 py-2.5 px-3 rounded border border-[#e1d7cb]">
+        <ShieldCheck className="w-3.5 h-3.5 shrink-0 text-[#9e563e]" />
+        <span>{isGeminiActive ? 'Applying claim checks and optional AI review…' : 'Applying claim checks…'}</span>
       </div>
     </div>
   );

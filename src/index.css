@@ -1,1 +1,25 @@
 @import "tailwindcss";
+
+@layer base {
+  :root { font-family: "DM Sans", sans-serif; color: #2a2a2a; background: #f8f9fa; font-synthesis: none; text-rendering: optimizeLegibility; }
+  body { margin: 0; min-width: 320px; background: #f8f9fa; color: #2a2a2a; font-family: "DM Sans", sans-serif; }
+  button, input, select, textarea { font: inherit; }
+  button { cursor: pointer; }
+  :focus-visible { outline: 2px solid #9e563e; outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+}
+
+.display-title { color: #111; font-family: "DM Serif Display", Georgia, serif; font-size: clamp(3rem, 7vw, 5.6rem); letter-spacing: -.045em; line-height: .98; font-weight: 400; }
+.display-title em { color: #9e563e; font-weight: 400; }
+.font-serif { font-family: "DM Serif Display", Georgia, serif; }
+.eyebrow { display: inline-flex; align-items: center; gap: .55rem; color: #777; font-size: .69rem; font-weight: 700; letter-spacing: .12em; line-height: 1.4; text-transform: uppercase; }
+.eyebrow > span:first-child { color: #9e563e; font-family: "DM Sans", sans-serif; }
+.editorial-note { border-left: 1px solid #d6d6d6; padding: 1.2rem 0 1.2rem 2rem; }
+.feature-card, .spec-panel { border: 1px solid #e1e1e1; border-radius: 4px; background: #fff; padding: clamp(1.4rem, 3vw, 2.1rem); }
+.btn-primary, .btn-secondary { display: inline-flex; align-items: center; justify-content: center; gap: .6rem; min-height: 2.9rem; padding: .7rem 1.1rem; border: 1px solid #222; border-radius: 4px; font-size: .86rem; font-weight: 600; transition: background-color .18s ease, color .18s ease, border-color .18s ease; }
+.btn-primary { background: #202020; color: white; }
+.btn-primary:hover { background: #9e563e; border-color: #9e563e; }
+.btn-secondary { background: transparent; color: #222; border-color: #cfcfcf; }
+.btn-secondary:hover { border-color: #222; background: white; }
+.text-link { display: inline-flex; align-items: center; gap: .5rem; color: #8d4934; font-size: .88rem; font-weight: 650; }
+.text-link:hover { color: #592c20; }

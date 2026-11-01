@@ -1,0 +1,20 @@
+flowchart TD
+  A[Valid claim submitted] --> B[Compute local baseline first]
+  B --> C[Read key from localStorage or Vite env]
+  C --> D{Key available?}
+  D -->|No| E[Skip Gemini and return baseline]
+  D -->|Yes| F[Select claim fields and baseline flags]
+  F --> G[Build examiner prompt and JSON schema]
+  G --> H[GoogleGenAI generateContent]
+  H --> I{Request succeeds?}
+  I -->|No| J[Catch warning and return null]
+  I -->|Yes| K[Parse response.text as JSON]
+  K --> L{Summary and fraud pattern present?}
+  L -->|No| M[Return null]
+  L -->|Yes| N[Attach optional Gemini analysis]
+  J --> O[Show baseline result]
+  M --> O
+  E --> O
+  N --> P[Show baseline plus AI narrative]
+  O --> Q[Heuristic tier and score stay unchanged]
+  P --> Q

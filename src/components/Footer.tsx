@@ -1,20 +1,3 @@
 import React from 'react';
-import { Shield } from 'lucide-react';
-
-export const Footer: React.FC = () => {
-  return (
-    <footer className="bg-white border-t border-slate-200 mt-auto py-6">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-        <div className="flex items-center space-x-2">
-          <Shield className="w-4 h-4 text-indigo-600" />
-          <span className="font-bold text-slate-800">Veridex</span>
-          <span className="text-slate-400">|</span>
-          <span className="text-slate-600">AI Insurance Fraud Risk Platform</span>
-        </div>
-        <div>
-          <span>Powered by Deterministic Heuristics & Google Gemini 2.5 Flash</span>
-        </div>
-      </div>
-    </footer>
-  );
-};
+import { ShieldCheck } from 'lucide-react';
+export const Footer: React.FC = () => <footer className="mt-20 border-t border-[#e1e1e1] py-7 text-sm text-[#777]"><div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-10 flex flex-col sm:flex-row items-center justify-between gap-3"><div className="flex items-center gap-2"><ShieldCheck className="w-4 h-4 text-[#9e563e]"/><span className="font-semibold tracking-wider text-[#333]">VERIDEX</span><span className="text-[#ccc]">/</span><span>Claim intelligence workspace</span></div><span className="text-xs">Heuristic assessment · Optional Gemini assistance</span></div></footer>;

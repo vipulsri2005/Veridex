@@ -9,3 +9,5 @@ coverage/
 .vite/
 .vite-temp/
 .gemini/
+
+.vercel

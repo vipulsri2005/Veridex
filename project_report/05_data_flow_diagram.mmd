@@ -1,0 +1,19 @@
+flowchart LR
+  USER[External entity: User] -->|claim fields and questions| P1((1. Enter claim))
+  P1 --> D1[(React component state: active claim)]
+  D1 --> P2((2. Validate claim))
+  P2 -->|errors| USER
+  P2 -->|valid claim| P3((3. Evaluate local rules))
+  P3 --> D2[(Baseline result in React state)]
+  D2 --> P4((4. Optional AI enrichment))
+  D3[(localStorage: Gemini key)] --> P4
+  P4 -->|prompt| GEMINI[External system: Gemini API]
+  GEMINI -->|generated output| P4
+  P4 --> D2
+  D2 --> P5((5. Render result))
+  P5 --> USER
+  USER --> P6((6. Copilot question))
+  D2 --> P6
+  P6 --> GEMINI
+  GEMINI --> P6
+  P6 --> USER

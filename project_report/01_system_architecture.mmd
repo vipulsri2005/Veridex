@@ -1,0 +1,17 @@
+flowchart LR
+  U[User / Browser] --> UI[React SPA: Dashboard, Forms, Results]
+  UI --> VAL[Client-side validation]
+  VAL -->|valid ClaimData| SCORE[Local heuristic service]
+  SCORE --> BASE[Baseline PredictionResult]
+  BASE --> KEY{Gemini key configured?}
+  KEY -->|No| VIEW[Result UI]
+  KEY -->|Yes| SDK[Google GenAI SDK in browser]
+  SDK --> API[Google Gemini API: gemini-2.5-flash]
+  API --> PARSE[Parse structured response]
+  PARSE -->|valid| ENRICH[Attach geminiAnalysis]
+  PARSE -->|failure or null| VIEW
+  ENRICH --> VIEW
+  VIEW --> CHAT[Optional Copilot requests]
+  CHAT --> SDK
+  LS[(Browser localStorage: Gemini API key only)] -. lookup and save .-> KEY
+  NOTE[No app backend, claims database, or authentication] --- UI

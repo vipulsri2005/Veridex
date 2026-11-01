@@ -1,299 +1,55 @@
 import React from 'react';
-import { 
-  Car, 
-  HeartPulse, 
-  ArrowRight, 
-  FileCheck2, 
-  AlertTriangle, 
-  TrendingUp, 
-  Zap, 
-  ShieldCheck, 
-  BrainCircuit,
-  Lock,
-  Layers
-} from 'lucide-react';
+import { Car, HeartPulse, ArrowRight, ShieldCheck, Sparkles, FileSearch, ClipboardCheck } from 'lucide-react';
 import { InsuranceType } from '../types';
 
-interface DashboardProps {
-  onStartAnalysis: (type: InsuranceType) => void;
-  onNavigateToAbout: () => void;
-}
+interface DashboardProps { onStartAnalysis: (type: InsuranceType) => void; onNavigateToAbout: () => void; }
 
-export const Dashboard: React.FC<DashboardProps> = ({
-  onStartAnalysis,
-  onNavigateToAbout,
-}) => {
-  // Clear simulated / demo statistics
-  const stats = [
-    {
-      id: 'stat-claims-analyzed',
-      label: 'Claims Analyzed',
-      value: '18,420',
-      subtext: '+12.4% this month',
-      icon: <FileCheck2 className="w-5 h-5 text-indigo-600" />,
-      bg: 'bg-indigo-50',
-    },
-    {
-      id: 'stat-fraud-detected',
-      label: 'Fraud Cases Detected',
-      value: '1,845',
-      subtext: '10.01% anomaly detection',
-      icon: <AlertTriangle className="w-5 h-5 text-rose-600" />,
-      bg: 'bg-rose-50',
-    },
-    {
-      id: 'stat-avg-risk',
-      label: 'Average Risk Score',
-      value: '24.8%',
-      subtext: 'Baseline risk across claims',
-      icon: <TrendingUp className="w-5 h-5 text-amber-600" />,
-      bg: 'bg-amber-50',
-    },
-    {
-      id: 'stat-straight-through',
-      label: 'Automated Clearance',
-      value: '84.2%',
-      subtext: 'Straight-through low-risk',
-      icon: <Zap className="w-5 h-5 text-emerald-600" />,
-      bg: 'bg-emerald-50',
-    },
-  ];
-
-  return (
-    <div id="dashboard-page" className="space-y-10 animate-in fade-in-50 duration-300">
-      {/* Hero Section */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-slate-900 via-indigo-950 to-slate-900 text-white p-8 sm:p-12 shadow-xl">
-        {/* Subtle grid background pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e1b4b15_1px,transparent_1px),linear-gradient(to_bottom,#1e1b4b15_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none opacity-40"></div>
-        <div className="absolute top-0 right-0 -mt-12 -mr-12 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-        <div className="relative z-10 max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/20 text-indigo-200 border border-indigo-500/30 text-xs font-semibold mb-5 backdrop-blur-xs">
-            <BrainCircuit className="w-3.5 h-3.5 text-indigo-400" />
-            <span>Veridex AI Claim Risk & Forensic Intelligence</span>
-          </div>
-
-          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-3 leading-tight flex items-center gap-3">
-            <span>Veridex</span>
-            <span className="text-xs font-semibold px-2.5 py-1 rounded-lg bg-indigo-500/30 text-indigo-200 border border-indigo-400/30 font-mono">
-              SIU Edition
-            </span>
-          </h1>
-
-          <p className="text-lg sm:text-xl font-medium text-indigo-200 mb-4">
-            AI-Powered Insurance Claim Risk Assessment & Fraud Forensics
-          </p>
-
-          <p className="text-base sm:text-lg text-slate-300 leading-relaxed mb-8 max-w-2xl">
-            Evaluate claim telemetry across vehicle and healthcare lines with hybrid heuristic scoring, Gemini 2.5 Flash forensic reasoning, and automated SIU checklists.
-          </p>
-
-          <div className="flex flex-wrap items-center gap-4">
-            <button
-              id="hero-analyze-car-btn"
-              onClick={() => onStartAnalysis('car')}
-              className="inline-flex items-center space-x-2 px-6 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm shadow-lg shadow-indigo-700/30 transition-all focus:outline-none focus:ring-2 focus:ring-indigo-400"
-            >
-              <Car className="w-4 h-4" />
-              <span>Analyze Car Claim</span>
-              <ArrowRight className="w-4 h-4 ml-1" />
-            </button>
-
-            <button
-              id="hero-analyze-health-btn"
-              onClick={() => onStartAnalysis('health')}
-              className="inline-flex items-center space-x-2 px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-sm border border-white/20 backdrop-blur-xs transition-all focus:outline-none focus:ring-2 focus:ring-white/40"
-            >
-              <HeartPulse className="w-4 h-4" />
-              <span>Analyze Health Claim</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Simulated Statistics Bar */}
+export const Dashboard: React.FC<DashboardProps> = ({ onStartAnalysis, onNavigateToAbout }) => (
+  <div id="dashboard-page" className="space-y-20 sm:space-y-28 animate-in fade-in-50 duration-200">
+    <section className="grid lg:grid-cols-[1.15fr_.85fr] gap-12 lg:gap-20 items-end pt-10 sm:pt-16">
       <div>
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center space-x-2">
-            <ShieldCheck className="w-4 h-4 text-indigo-600" />
-            <h2 className="text-sm font-bold text-slate-900 uppercase tracking-wider">
-              Operational Risk Overview
-            </h2>
-          </div>
-          <span className="text-xs text-slate-600 font-medium bg-slate-100 px-2.5 py-1 rounded-md">
-            Simulated Demonstration Metrics
-          </span>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          {stats.map((item) => (
-            <div
-              key={item.id}
-              id={item.id}
-              className="bg-white rounded-2xl border border-slate-200 p-5 shadow-xs hover:shadow-md transition-shadow"
-            >
-              <div className="flex items-center justify-between mb-3">
-                <span className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
-                  {item.label}
-                </span>
-                <div className={`p-2 rounded-xl ${item.bg}`}>
-                  {item.icon}
-                </div>
-              </div>
-              <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-1">
-                {item.value}
-              </div>
-              <div className="text-xs text-slate-500 font-medium">
-                {item.subtext}
-              </div>
-            </div>
-          ))}
+        <p className="eyebrow"><span>01</span> / CLAIM INTELLIGENCE</p>
+        <h1 className="display-title mt-6 max-w-3xl">A clearer view of <em>claim risk.</em></h1>
+        <p className="mt-6 max-w-xl text-lg leading-8 text-[#555]">Veridex helps insurance teams review vehicle and health claims through transparent, consistent risk checks—with optional Gemini assistance for added context.</p>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <button id="hero-analyze-car-btn" onClick={() => onStartAnalysis('car')} className="btn-primary">Analyze a claim <ArrowRight className="w-4 h-4" /></button>
+          <button onClick={onNavigateToAbout} className="btn-secondary">Explore the system</button>
         </div>
       </div>
-
-      {/* Two Large Insurance Cards Section */}
-      <div>
-        <div className="mb-4">
-          <h2 className="text-xl font-extrabold text-slate-900 tracking-tight">
-            Claim Risk Evaluators
-          </h2>
-          <p className="text-xs text-slate-500">
-            Select a specialized line of coverage to initialize fraud scoring
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Card 1: 🚗 Car Insurance */}
-          <div
-            id="card-car-insurance"
-            className="group relative bg-white rounded-2xl border border-slate-200 p-8 shadow-xs hover:shadow-lg hover:border-indigo-300 transition-all duration-200 flex flex-col justify-between"
-          >
-            <div>
-              <div className="w-14 h-14 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-6 group-hover:scale-105 group-hover:bg-indigo-600 group-hover:text-white transition-all">
-                <Car className="w-7 h-7" />
-              </div>
-
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-indigo-700 bg-indigo-50 px-2.5 py-0.5 rounded-md">
-                  Vehicle Line
-                </span>
-                <span className="text-xs text-slate-400">22 Inspection Vectors</span>
-              </div>
-
-              <h3 className="text-2xl font-extrabold text-slate-900 mb-2">
-                🚗 Car Insurance
-              </h3>
-
-              <p className="text-sm text-slate-600 leading-relaxed mb-6">
-                Analyze vehicle insurance claims for potential fraud.
-              </p>
-
-              <div className="space-y-2 mb-8 text-xs text-slate-500 border-t border-slate-100 pt-4">
-                <div className="flex items-center justify-between">
-                  <span>Collision & Impact Analysis</span>
-                  <span className="font-semibold text-slate-700">Multi-vehicle / Single</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span>Police & Witness Verification</span>
-                  <span className="font-semibold text-slate-700">Official cross-check</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span>Claim-to-Premium Ratio</span>
-                  <span className="font-semibold text-slate-700">Disproportion detector</span>
-                </div>
-              </div>
-            </div>
-
-            <button
-              id="btn-dashboard-analyze-car"
-              type="button"
-              onClick={() => onStartAnalysis('car')}
-              className="w-full inline-flex items-center justify-center space-x-2 py-3.5 px-5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow-md shadow-indigo-100 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            >
-              <span>Analyze Car Claim</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
-
-          {/* Card 2: 🏥 Health Insurance */}
-          <div
-            id="card-health-insurance"
-            className="group relative bg-white rounded-2xl border border-slate-200 p-8 shadow-xs hover:shadow-lg hover:border-indigo-300 transition-all duration-200 flex flex-col justify-between"
-          >
-            <div>
-              <div className="w-14 h-14 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-6 group-hover:scale-105 group-hover:bg-indigo-600 group-hover:text-white transition-all">
-                <HeartPulse className="w-7 h-7" />
-              </div>
-
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-xs font-bold uppercase tracking-wider text-indigo-700 bg-indigo-50 px-2.5 py-0.5 rounded-md">
-                  Clinical Line
-                </span>
-                <span className="text-xs text-slate-400">18 Policy Variables</span>
-              </div>
-
-              <h3 className="text-2xl font-extrabold text-slate-900 mb-2">
-                🏥 Health Insurance
-              </h3>
-
-              <p className="text-sm text-slate-600 leading-relaxed mb-6">
-                Analyze health insurance claims for potential fraud.
-              </p>
-
-              <div className="space-y-2 mb-8 text-xs text-slate-500 border-t border-slate-100 pt-4">
-                <div className="flex items-center justify-between">
-                  <span>Policy Inception vs. Loss Proximity</span>
-                  <span className="font-semibold text-slate-700">Pre-existing flag</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span>Billing vs. Severity Classification</span>
-                  <span className="font-semibold text-slate-700">Cost anomaly audit</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span>Risk Segmentation Category</span>
-                  <span className="font-semibold text-slate-700">Watchlist weighting</span>
-                </div>
-              </div>
-            </div>
-
-            <button
-              id="btn-dashboard-analyze-health"
-              type="button"
-              onClick={() => onStartAnalysis('health')}
-              className="w-full inline-flex items-center justify-center space-x-2 py-3.5 px-5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow-md shadow-indigo-100 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            >
-              <span>Analyze Health Claim</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
-        </div>
+      <div className="editorial-note">
+        <span className="eyebrow"><ShieldCheck className="w-4 h-4" /> A practical review workspace</span>
+        <p className="mt-5 text-xl leading-8 text-[#272727] font-serif">“Bring claim details together, understand the signals, and keep the final decision with the investigator.”</p>
+        <div className="mt-6 border-t border-[#e1e1e1] pt-4 text-sm text-[#666]">Rule-based risk assessment <span className="mx-2 text-[#bbb]">·</span> Optional Gemini 2.5 Flash</div>
       </div>
+    </section>
 
-      {/* Architecture Highlights & Decoupled Service Banner */}
-      <div className="bg-slate-100/80 rounded-2xl p-6 border border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div className="flex items-center space-x-3.5">
-          <div className="w-10 h-10 rounded-xl bg-white text-indigo-600 flex items-center justify-center border border-slate-200 shadow-2xs">
-            <Layers className="w-5 h-5" />
-          </div>
-          <div>
-            <h4 className="text-sm font-bold text-slate-900">
-              Decoupled ML Prediction Architecture
-            </h4>
-            <p className="text-xs text-slate-600">
-              The frontend prediction service operates independently with simulated heuristics and is ready for live ML backend integration.
-            </p>
-          </div>
-        </div>
-
-        <button
-          id="btn-learn-architecture"
-          type="button"
-          onClick={onNavigateToAbout}
-          className="shrink-0 px-4 py-2 text-xs font-semibold rounded-lg bg-white hover:bg-slate-50 text-indigo-700 border border-slate-300 shadow-2xs transition-colors"
-        >
-          Learn How It Works
-        </button>
+    <section id="capabilities" className="border-t border-[#dcdcdc] pt-8">
+      <p className="eyebrow"><span>02</span> / CAPABILITIES</p>
+      <div className="mt-7 grid md:grid-cols-2 gap-5">
+        <article className="feature-card">
+          <div className="flex items-center justify-between"><span className="eyebrow">LINE 01 / VEHICLE</span><Car className="w-5 h-5 text-[#9e563e]" /></div>
+          <h2 className="font-serif text-2xl mt-8">Automobile claims</h2>
+          <p className="mt-3 leading-7 text-[#5b5b5b]">Review claim size against premium, incident timing and reporting, customer tenure, damage, injury, and supporting evidence.</p>
+          <button id="btn-dashboard-analyze-car" onClick={() => onStartAnalysis('car')} className="text-link mt-7">Review a vehicle claim <ArrowRight className="w-4 h-4" /></button>
+        </article>
+        <article className="feature-card">
+          <div className="flex items-center justify-between"><span className="eyebrow">LINE 02 / HEALTH</span><HeartPulse className="w-5 h-5 text-[#9e563e]" /></div>
+          <h2 className="font-serif text-2xl mt-8">Health claims</h2>
+          <p className="mt-3 leading-7 text-[#5b5b5b]">Review timing after policy start, claim size relative to premium, risk segment, and procedure severity.</p>
+          <button id="btn-dashboard-analyze-health" onClick={() => onStartAnalysis('health')} className="text-link mt-7">Review a health claim <ArrowRight className="w-4 h-4" /></button>
+        </article>
       </div>
-    </div>
-  );
-};
+    </section>
+
+    <section className="border-t border-[#dcdcdc] pt-8">
+      <p className="eyebrow"><span>03</span> / REVIEW FLOW</p>
+      <div className="mt-7 grid sm:grid-cols-3 gap-0 border-y border-[#e1e1e1]">
+        {[{icon:<FileSearch/>,title:'Enter claim details',copy:'Choose a coverage line and provide the relevant policy and incident information.'},{icon:<Sparkles/>,title:'Review risk signals',copy:'A deterministic heuristic baseline evaluates the submitted details. Gemini can add narrative context when configured.'},{icon:<ClipboardCheck/>,title:'Assess the result',copy:'Review the risk band, contributing factors, claim summary, and any available recommendations.'}].map((step,i)=><article key={step.title} className="py-7 sm:px-7 first:sm:pl-0 border-b sm:border-b-0 sm:border-r last:border-0 border-[#e1e1e1]"><div className="flex items-center gap-3 text-[#9e563e]"><span className="font-mono text-xs">0{i+1}</span>{React.cloneElement(step.icon,{className:'w-4 h-4'})}</div><h3 className="mt-5 font-serif text-xl">{step.title}</h3><p className="mt-2 text-sm leading-6 text-[#666]">{step.copy}</p></article>)}
+      </div>
+    </section>
+    <section className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 bg-[#f0efec] p-6 sm:p-8">
+      <div><p className="eyebrow">04 / SYSTEM INFORMATION</p><p className="mt-3 text-[#555]">See how the scoring and optional AI assistance work.</p></div>
+      <button onClick={onNavigateToAbout} className="btn-secondary shrink-0">Read system specification <ArrowRight className="w-4 h-4" /></button>
+    </section>
+  </div>
+);
