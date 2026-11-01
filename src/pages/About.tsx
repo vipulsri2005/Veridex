@@ -54,7 +54,7 @@ export const About: React.FC = () => {
         </h2>
 
         <blockquote className="border-l-4 border-indigo-600 pl-5 py-2 my-4 bg-slate-50 rounded-r-xl text-base sm:text-lg text-slate-700 font-medium italic">
-          "Insurance Fraud Detection System is designed to assist insurance companies in identifying potentially fraudulent insurance claims."
+          "Veridex is an AI/FinTech intelligence platform designed to assist insurance carriers and SIU investigators in detecting and adjudicating potentially fraudulent claims."
         </blockquote>
 
         <p className="text-sm sm:text-base text-slate-600 leading-relaxed mt-4">

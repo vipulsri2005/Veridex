@@ -70,19 +70,22 @@ export const Dashboard: React.FC<DashboardProps> = ({
         <div className="relative z-10 max-w-3xl">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/20 text-indigo-200 border border-indigo-500/30 text-xs font-semibold mb-5 backdrop-blur-xs">
             <BrainCircuit className="w-3.5 h-3.5 text-indigo-400" />
-            <span>AI-Powered Risk Assessment Engine</span>
+            <span>Veridex AI Claim Risk & Forensic Intelligence</span>
           </div>
 
-          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-3 leading-tight">
-            Insurance Fraud Detection System
+          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-3 leading-tight flex items-center gap-3">
+            <span>Veridex</span>
+            <span className="text-xs font-semibold px-2.5 py-1 rounded-lg bg-indigo-500/30 text-indigo-200 border border-indigo-400/30 font-mono">
+              SIU Edition
+            </span>
           </h1>
 
           <p className="text-lg sm:text-xl font-medium text-indigo-200 mb-4">
-            AI-Powered Insurance Claim Risk Assessment
+            AI-Powered Insurance Claim Risk Assessment & Fraud Forensics
           </p>
 
           <p className="text-base sm:text-lg text-slate-300 leading-relaxed mb-8 max-w-2xl">
-            Analyze insurance claim information and identify potentially fraudulent claims using intelligent risk assessment.
+            Evaluate claim telemetry across vehicle and healthcare lines with hybrid heuristic scoring, Gemini 2.5 Flash forensic reasoning, and automated SIU checklists.
           </p>
 
           <div className="flex flex-wrap items-center gap-4">

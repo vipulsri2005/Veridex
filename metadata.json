@@ -1,6 +1,6 @@
 {
-  "name": "Insurance Fraud Detection System",
-  "description": "AI-Powered Insurance Claim Risk Assessment platform for car and health insurance fraud detection with standalone mock ML prediction architecture.",
+  "name": "Veridex - AI Insurance Fraud Risk Platform",
+  "description": "Veridex is an AI-powered claim risk assessment platform for auto and health insurance fraud detection combining deterministic heuristics and Gemini 2.5 Flash forensics.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

@@ -48,11 +48,16 @@ export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
                 <ShieldAlert className="w-5 h-5 text-white" />
               </div>
               <div>
-                <span className="text-base sm:text-lg font-bold tracking-tight text-slate-900 block leading-tight">
-                  Insurance Fraud Detection System
-                </span>
+                <div className="flex items-center gap-2">
+                  <span className="text-base sm:text-lg font-extrabold tracking-tight text-slate-900 block leading-tight">
+                    Veridex
+                  </span>
+                  <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-indigo-100 text-indigo-800 uppercase tracking-wider">
+                    AI SIU
+                  </span>
+                </div>
                 <span className="text-xs text-slate-500 font-medium hidden sm:inline-block">
-                  AI Claim Risk Intelligence
+                  Fraud Risk & Forensic Intelligence
                 </span>
               </div>
             </button>
