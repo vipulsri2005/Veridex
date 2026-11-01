@@ -37,7 +37,7 @@ By unifying **granular policyholder telemetry**, **coverage thresholds**, and **
 - **One-Click Demo Presets**:
   - Preloaded "High-Risk" and "Low-Risk" claim profiles on both vehicle and medical forms for instant demonstration.
 - **Enterprise-Ready Deployment**:
-  - Zero-configuration deployment on **Vercel** (`vercel.json`) and containerized deployments via **Docker** (`Dockerfile` + multi-stage Nginx).
+  - Containerized deployments via **Docker** (`Dockerfile` + multi-stage Nginx).
 
 ---
 
@@ -117,20 +117,6 @@ docker run -d -p 3000:80 veridex
 ```
 
 Access the application at [http://localhost:3000](http://localhost:3000).
-
----
-
-## ☁️ Deploy to Vercel (1-Click)
-
-1. Push your repository to GitHub.
-2. Sign in to [Vercel](https://vercel.com) and click **"Add New Project"** > **"Import"**.
-3. Vercel automatically detects the Vite configuration:
-   - **Framework**: `Vite`
-   - **Build Command**: `npm run build`
-   - **Output Directory**: `dist`
-4. *(Optional)* Add the environment variable:
-   - `VITE_GEMINI_API_KEY` = `your_gemini_api_key`
-5. Click **Deploy**. Your app is live with automatic SSL and CDN caching!
 
 ---
 
