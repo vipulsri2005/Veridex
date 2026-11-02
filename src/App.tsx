@@ -5,9 +5,10 @@ import { Footer } from './components/Footer';
 import { Dashboard } from './pages/Dashboard';
 import { ClaimAnalysis } from './pages/ClaimAnalysis';
 import { About } from './pages/About';
+import { ModelDemo } from './pages/ModelDemo';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<'dashboard' | 'claim-analysis' | 'about'>('dashboard');
+  const [currentPage, setCurrentPage] = useState<'dashboard' | 'claim-analysis' | 'ml-demo' | 'about'>('dashboard');
   const [selectedInsuranceType, setSelectedInsuranceType] = useState<InsuranceType>('car');
 
   const handleStartAnalysis = (type: InsuranceType) => {
@@ -16,7 +17,7 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const handleNavigate = (page: 'dashboard' | 'claim-analysis' | 'about') => {
+  const handleNavigate = (page: 'dashboard' | 'claim-analysis' | 'ml-demo' | 'about') => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -32,6 +33,7 @@ export default function App() {
           <Dashboard
             onStartAnalysis={handleStartAnalysis}
             onNavigateToAbout={() => handleNavigate('about')}
+            onNavigateToModelDemo={() => handleNavigate('ml-demo')}
           />
         )}
 
@@ -44,6 +46,8 @@ export default function App() {
         )}
 
         {currentPage === 'about' && <About />}
+
+        {currentPage === 'ml-demo' && <ModelDemo onBackToDashboard={() => handleNavigate('dashboard')} />}
       </main>
 
       {/* Minimal Footer */}

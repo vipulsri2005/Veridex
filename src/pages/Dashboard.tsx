@@ -1,10 +1,10 @@
 import React from 'react';
-import { Car, HeartPulse, ArrowRight, ShieldCheck, Sparkles, FileSearch, ClipboardCheck } from 'lucide-react';
+import { Car, HeartPulse, ArrowRight, ShieldCheck, Sparkles, FileSearch, ClipboardCheck, Cpu } from 'lucide-react';
 import { InsuranceType } from '../types';
 
-interface DashboardProps { onStartAnalysis: (type: InsuranceType) => void; onNavigateToAbout: () => void; }
+interface DashboardProps { onStartAnalysis: (type: InsuranceType) => void; onNavigateToAbout: () => void; onNavigateToModelDemo: () => void; }
 
-export const Dashboard: React.FC<DashboardProps> = ({ onStartAnalysis, onNavigateToAbout }) => (
+export const Dashboard: React.FC<DashboardProps> = ({ onStartAnalysis, onNavigateToAbout, onNavigateToModelDemo }) => (
   <div id="dashboard-page" className="space-y-20 sm:space-y-28 animate-in fade-in-50 duration-200">
     <section className="grid lg:grid-cols-[1.15fr_.85fr] gap-12 lg:gap-20 items-end pt-10 sm:pt-16">
       <div>
@@ -13,6 +13,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onStartAnalysis, onNavigat
         <p className="mt-6 max-w-xl text-lg leading-8 text-[#555]">Veridex helps insurance teams review vehicle and health claims through transparent, consistent risk checks—with optional Gemini assistance for added context.</p>
         <div className="mt-8 flex flex-wrap gap-3">
           <button id="hero-analyze-car-btn" onClick={() => onStartAnalysis('car')} className="btn-primary">Analyze a claim <ArrowRight className="w-4 h-4" /></button>
+          <button id="hero-ml-demo-btn" onClick={onNavigateToModelDemo} className="btn-secondary"><Cpu className="w-4 h-4" />ML demonstration</button>
           <button onClick={onNavigateToAbout} className="btn-secondary">Explore the system</button>
         </div>
       </div>

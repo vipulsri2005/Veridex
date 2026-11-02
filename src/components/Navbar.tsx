@@ -3,17 +3,17 @@ import { ShieldCheck, BarChart2, Search, Info, Menu, X, Cpu } from 'lucide-react
 import { isGeminiConfigured } from '../services/geminiKey';
 import { GeminiSettingsModal } from './GeminiSettingsModal';
 
-interface NavbarProps { currentPage: 'dashboard' | 'claim-analysis' | 'about'; onNavigate: (page: 'dashboard' | 'claim-analysis' | 'about') => void; }
+interface NavbarProps { currentPage: 'dashboard' | 'claim-analysis' | 'ml-demo' | 'about'; onNavigate: (page: 'dashboard' | 'claim-analysis' | 'ml-demo' | 'about') => void; }
 
 export const Navbar: React.FC<NavbarProps> = ({ currentPage, onNavigate }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [geminiModalOpen, setGeminiModalOpen] = useState(false);
   const [hasGeminiKey, setHasGeminiKey] = useState(isGeminiConfigured());
   useEffect(() => { const update = () => setHasGeminiKey(isGeminiConfigured()); window.addEventListener('gemini_key_updated', update); return () => window.removeEventListener('gemini_key_updated', update); }, []);
-  const navItems: {id:'dashboard'|'claim-analysis'|'about';label:string;icon:React.ReactNode}[] = [
-    {id:'dashboard',label:'Overview',icon:<BarChart2 className="w-4 h-4"/>}, {id:'claim-analysis',label:'Claim analysis',icon:<Search className="w-4 h-4"/>}, {id:'about',label:'System spec',icon:<Info className="w-4 h-4"/>},
+  const navItems: {id:'dashboard'|'claim-analysis'|'ml-demo'|'about';label:string;icon:React.ReactNode}[] = [
+    {id:'dashboard',label:'Overview',icon:<BarChart2 className="w-4 h-4"/>}, {id:'claim-analysis',label:'Claim analysis',icon:<Search className="w-4 h-4"/>}, {id:'ml-demo',label:'ML demo',icon:<Cpu className="w-4 h-4"/>}, {id:'about',label:'System spec',icon:<Info className="w-4 h-4"/>},
   ];
-  const go = (page:'dashboard'|'claim-analysis'|'about') => { onNavigate(page); setMobileMenuOpen(false); };
+  const go = (page:'dashboard'|'claim-analysis'|'ml-demo'|'about') => { onNavigate(page); setMobileMenuOpen(false); };
   return <>
     <header className="sticky top-0 z-40 border-b border-[#e1e1e1] bg-[#f8f9fa]/95 backdrop-blur-md">
       <div className="max-w-6xl mx-auto px-5 sm:px-8 lg:px-10">

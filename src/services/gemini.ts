@@ -1,6 +1,7 @@
 import { GoogleGenAI, Type } from '@google/genai';
 import { ClaimData, PredictionResult, GeminiForensicAnalysis } from '../types';
 import { getGeminiApiKey } from './geminiKey';
+import type { ModelPrediction } from './mlApi';
 
 const GEMINI_MODEL = 'gemini-2.5-flash';
 
@@ -226,4 +227,38 @@ Provide professional, concise, and tactical answers to assist the investigator. 
   });
 
   return response.text || 'No response generated.';
+}
+
+/** Explains an immutable backend ML result; Gemini does not return or alter a score. */
+export async function explainModelPrediction(
+  result: ModelPrediction,
+  features: Record<string, string | number>,
+): Promise<string | null> {
+  const apiKey = getGeminiApiKey();
+  if (!apiKey) return null;
+
+  try {
+    const ai = new GoogleGenAI({ apiKey });
+    const probability = result.fraud_probability === null
+      ? 'not provided by the classifier'
+      : `${(result.fraud_probability * 100).toFixed(2)}%`;
+    const response = await ai.models.generateContent({
+      model: GEMINI_MODEL,
+      contents: [
+        'Explain this existing machine-learning result for an academic claims-review demonstration in plain language.',
+        'Treat the model output as fixed. Do not change the class, invent a different probability, or claim fraud as a fact.',
+        'State that it is a model signal requiring human review and that this trained model has low fraud recall.',
+        `Model: ${result.model_name}`,
+        `Predicted class: ${result.prediction} (${result.prediction_label})`,
+        `Fraud probability: ${probability}`,
+        `Classification threshold: ${result.classification_threshold}`,
+        `Input features: ${JSON.stringify(features)}`,
+      ].join('\n'),
+      config: { temperature: 0.2 },
+    });
+    return response.text?.trim() || null;
+  } catch (error) {
+    console.warn('Gemini model explanation unavailable:', error);
+    return null;
+  }
 }

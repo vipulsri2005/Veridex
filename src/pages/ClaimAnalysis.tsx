@@ -72,6 +72,7 @@ export const ClaimAnalysis: React.FC<ClaimAnalysisProps> = ({
   return (
       <div id="claim-analysis-page" className="max-w-5xl mx-auto py-2">
       {!isLoading && !predictionResult && <header className="mb-8 pt-5"><p className="eyebrow"><span>01</span> / CLAIM INTAKE</p><h1 className="font-serif text-4xl sm:text-5xl text-[#111] mt-4">Start a claim review.</h1><p className="mt-3 max-w-2xl text-[#666] leading-7">Enter the claim information below to receive a heuristic risk assessment and supporting signals.</p></header>}
+      {!isLoading && !predictionResult && <div role="note" className="mb-6 rounded border border-[#d9c7a5] bg-[#fff8e8] px-4 py-3 text-sm text-[#665333]"><strong>Normal claim submission:</strong> this workflow preserves the existing intake assessment. It does not call the Random Forest because this form does not collect every required model feature. Use <strong>ML demo</strong> for complete records and historical examples.</div>}
       {/* 1. Loading State */}
       {isLoading && (
         <div className="py-12">
